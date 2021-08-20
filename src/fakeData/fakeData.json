@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "book_name": "JavaScript Everywhere",
+        "book_description": "Adam D. Scottark Luiz",
+        "price":"234",
+        "image": "https://i.ibb.co/Xx2Fh7k/book-1.png"
+    },
+
+    {
+        "id": 2,
+        "book_name": "JavaScript Everywhere",
+        "book_description": "Adam D. Scottark Luiz",
+        "price":"250",
+        "image": "https://i.ibb.co/xFcwRQB/book-2.png"
+    },
+
+    {
+        "id": 3,
+        "book_name": "JavaScript Everywhere",
+        "book_description": "Adam D. Scottark Luiz",
+        "price":"270",
+        "image": "https://i.ibb.co/TB8nhNF/book-3.png"
+    },
+
+    {
+        "id": 4,
+        "book_name": "JavaScript Everywhere",
+        "book_description": "Adam D. Scottark Luiz",
+        "price":"290",
+        "image": "https://i.ibb.co/TB8nhNF/book-3.png"
+    }
+]

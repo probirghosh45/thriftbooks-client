@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+
+/* Search field design */
+
+
+.search__container{
+ width: 100%;
+ max-width: 570px;
+ border-radius: 6px;
+ margin: 30px auto 50px;
+ position: relative;
+ align-items: stretch;
+ display: flex;
+ overflow: hidden;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search__container::before{
+   content: "";
+   position:absolute;
+   top: calc(50% - 10px);
+   left: 15px; 
+   width: 18px;
+   height: 20px;
+   background: url("https://i.ibb.co/VjZJTkM/search.png ") no-repeat center center / contain;
+   
+
+
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.search__input{
+  background-color: bisque;
+  border: none;
+  outline: none;
+  padding: 20px 20px 20px 50px;
+  width: calc(100% - 100px);
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search__button{
+  background-color:#ff4b2b;
+  border:0;
+  outline: 0;
+  color: #fff;
+  width: 150px;
+  padding: 15px 20px;
 }
