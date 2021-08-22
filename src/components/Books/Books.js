@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 
 const Books = (props) => {
   const { productName, price, productImage } = props.book;
@@ -23,7 +25,12 @@ const Books = (props) => {
           style={{ fontWeight:"700", color:"#ff4b2b" }}>
               ${price}
           </Card.Title>
-          <Button className="button__style shadow-none" >Buy Now</Button>
+          <Button 
+          className="button__style shadow-none" 
+          as={Link} 
+          to="/checkout" >
+              Buy Now
+          </Button>
         </Card.Body>
       </Card>
     </Col>

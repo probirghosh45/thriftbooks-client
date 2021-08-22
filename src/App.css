@@ -57,3 +57,88 @@
   font-weight: 500;
 
 }
+
+/* sidebar design */
+
+#sidebar__style{
+  min-width: 250px;
+  max-width: 250px;
+  /* max-height: 100vh; */
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
+#sidebar__style ul {
+ padding-top: 15px;
+}
+
+#sidebar__style ul li{
+  /* padding: 5px;
+  padding-left: 15px; */
+  font-size: 25px;
+  /* text-align: center; */
+}
+
+#sidebar__style ul.list li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px;
+}
+
+#sidebar__style ul.list li a:hover{
+  color: #ff4b2b;
+  background-color: blanchedalmond;
+  display: block;
+}
+
+.sidebar__header  {
+  background-color: blueviolet;
+  padding: 5px;
+  text-align: center;
+}
+
+.sidebar__header h2{
+  text-align: center;
+}
+
+/* CTA=Call to Action */
+/* 
+.CTAs  {
+   text-align: center;
+} */
+
+ul.CTAs {
+  padding: 20px;
+} 
+
+
+ ul.CTAs a {
+  padding: 7px 10px; 
+  text-align: center;
+  display: block;
+  border-radius: 5px;
+} 
+
+.sidebar__home{
+  color: #ff4b2b;
+  background-color: blanchedalmond;
+  text-decoration: none;
+}
+#sidebar__style ul.CTAs a:hover{
+  color: #ff4b2b;
+}
+
+/* Admin  */
+.wrapper{
+  display: flex;
+  width: 100%;
+  background-color: rgb(169, 231, 231); 
+}
+
+/* admin navbar */
+.admin_navbar_content{
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+
+}
