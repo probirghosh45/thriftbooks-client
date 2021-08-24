@@ -38,6 +38,9 @@ function App() {
         <Route path="/admin">
           <Admin />
         </Route>
+        <Route path="/panel/:adminPanel">
+          <Admin />
+        </Route>
       {/* <Route path="/manageBooks">
           <ManageBooks/>
         </Route>
