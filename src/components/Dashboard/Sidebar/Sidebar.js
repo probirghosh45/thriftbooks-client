@@ -1,13 +1,12 @@
+
 import React from "react";
-import { Link,useParams} from "react-router-dom";
+import { Link} from "react-router-dom";
 import { FiEdit,FiFilePlus,FiBookOpen } from "react-icons/fi";
 import { AiFillHome } from "react-icons/ai";
 
 
 
 const Sidebar = () => {
-
-  const {adminPanel} =useParams();
 
   return (
       <nav id="sidebar__style">
@@ -16,13 +15,13 @@ const Sidebar = () => {
         </div>
         <ul className="list-unstyled list">
           <li>
-            <Link to="/panel/manageBooks" ><FiBookOpen/> Manage Books</Link>
+            <Link to="/panel/manageBook" ><FiBookOpen/> Manage Books</Link>
           </li>
           <li>
-            <Link to="/panel/addBooks" ><FiFilePlus/> Add Books</Link>
+            <Link to="/panel/addBook" ><FiFilePlus/> Add Books</Link>
           </li>
           <li>
-            <Link to="/panel/editBooks"><FiEdit/> Edit Books</Link>
+            <Link to="/panel/editBook"><FiEdit/> Edit Books</Link>
           </li>
         </ul>
         <ul className="list-unstyled CTAs">

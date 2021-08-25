@@ -1,38 +1,53 @@
-import React from "react";
+import axios from "axios";
+import React,{useState,useEffect} from "react";
 import { Table } from "react-bootstrap";
+import ActionItem from "./ActionItem";
 
-const ManageBooks = () => {
+const ManageBooks = ({setEditBook}) => {
+  
+  const [items,setItems]=useState([]);
+
+  useEffect(() => {
+    axios.get('https://electro-server.herokuapp.com/products')
+        .then(response => {
+            setItems(response.data);
+            // setLoading(false);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}, [])
+
+ 
+const handleDeleteItem = id => {
+  const removedItems = items.filter(item => item._id !== id);
+
+  axios.delete(`https://electro-server.herokuapp.com/delete/${id}`)
+      .then(response => {
+          response && setItems(removedItems);;
+      })
+      .catch(error => {
+          console.log(error);
+      })
+
+    }
+  
   return (
-    <div className="p-4">
-      <Table  variant="dark" striped bordered hover  style={{fontSize:"20px"}}>
-        <thead>
-          <tr className="text-center">
-            <th>Books Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>JavaScript Everywhere</td>
-            <td>Web Development</td>
-            <td>$ 250</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>JavaScript Everywhere</td>
-            <td>Web Development</td>
-            <td>$ 250</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td colSpan="2">Total</td>
-            <td>$ 500</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </Table>
+        <div className="px-5 pt-4 mx-md-4 mt-5 bg-white" style={{ borderRadius: "15px" }}>
+        <Table hover borderless responsive>
+            <thead className="bg-light">
+                <tr>
+                    <th>Book's Name</th>
+                    <th>Author's Name</th>
+                    <th>Book's Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {/* <ClipLoader loading={loading} css={loaderStyle} /> */}
+            {
+                items.map(item => <ActionItem item={item} key={item._id} handleDeleteItem={handleDeleteItem}  setEditBook={setEditBook} />)
+            }
+        </Table>
     </div>
   );
 };

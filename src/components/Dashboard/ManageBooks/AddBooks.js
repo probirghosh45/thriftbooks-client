@@ -4,18 +4,19 @@ import { Form, Row, Col,Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 
-const AddBooks = ({editBooks,updateBooks}) => {
+const AddBooks = ({editBook, updateBook }) => {
 
   const {register,handleSubmit,watch,formState: { errors }} = useForm();
+  
   const onSubmit = (data) => {
       const bookInfo ={
-          productName: data.bookName,
+        productName: data.bookName,
           category: data.authorName,
           price: data.bookPrice
       }
 
-      if(editBooks?._id){
-        return updateBooks(bookInfo)
+      if (editBook?._id) {
+        return updateBook(bookInfo)
     }
 
     axios.post('https://electro-server.herokuapp.com/addProduct', bookInfo )
@@ -35,10 +36,10 @@ const AddBooks = ({editBooks,updateBooks}) => {
               <Form.Control 
               placeholder="Enter Book's Name" 
               className="shadow-none"
-              name="bookName"
-              defaultValue={editBooks?.data.bookName} 
-            //   {...register}
-            ref={register}
+              name="bookName" //addProductData
+              defaultValue={editBook?.productName}  //update/edit ProductData
+            //   {...register} //react hook form ver. 7
+            ref={register}  //react hook form ver. 6
               />
             </Form.Group>
           </Col>
@@ -49,7 +50,7 @@ const AddBooks = ({editBooks,updateBooks}) => {
               placeholder="Enter Author's Name"
               className="shadow-none"
               name="authorName"
-              defaultValue={editBooks?.data.authorName}
+              defaultValue={editBook?.category}
             //   {...register}
             ref={register}
               />
@@ -64,7 +65,7 @@ const AddBooks = ({editBooks,updateBooks}) => {
               placeholder="Enter Book's Price" 
               className="shadow-none"
               name="bookPrice"
-              defaultValue={editBooks?.data.bookPrice}
+              defaultValue={editBook?.price}  //update data
             //   {...register}
             ref={register}
               />
@@ -73,7 +74,7 @@ const AddBooks = ({editBooks,updateBooks}) => {
           <Col lg={6} md={6} sm={12} xs={12}>
             <Form.Group>
               <Form.Label style={{fontWeight:"Bold"}}>Add Book's Photo</Form.Label>
-              {editBooks?._id ?
+              {editBook?._id ?
                   <Button  
                   className="d-block shadow-none" 
                   as={"label"} 
@@ -105,8 +106,8 @@ const AddBooks = ({editBooks,updateBooks}) => {
         </Row>
 
         <div className="mt-3">
-                    <Button type="submit" className="shadow-none" variant={editBooks?._id ? "success" : "info"}>
-                        {editBooks?._id ? "Update" : "Save"}
+                    <Button type="submit" className="shadow-none" variant={editBook?._id ? "success" : "info"}>
+                        {editBook?._id ? "Update" : "Save"}
                     </Button>
         </div>
       </Form>

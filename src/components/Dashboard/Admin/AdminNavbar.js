@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import { Link,useParams } from "react-router-dom";
-import AddBooks from "../ManageBooks/AddBooks";
-import ManageBooks from "../ManageBooks/ManageBooks";
 
 const AdminNavbar = () => {
 
@@ -15,9 +13,9 @@ const AdminNavbar = () => {
         <Container>
           <NavbarBrand>
             <h2>
-              {adminPanel==="addBooks"? "Add Books" 
-               :adminPanel==="editBooks" ? "Edit Books"
-               :"Manage Books"  
+              {adminPanel==="addBook"? "Add Book" 
+               :adminPanel==="editBook" ? "Edit Book"
+               :"Manage Book"  
             }
             </h2>
           </NavbarBrand>
