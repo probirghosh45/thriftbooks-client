@@ -1,16 +1,21 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Container, Table ,Button} from "react-bootstrap";
 import swal from 'sweetalert';
 import axios from 'axios';
-
+import { UserContext} from "../../App";
 const Checkout = () => {
 
+  const {loggedInUser} = useContext(UserContext)
+  const {cart} = useContext(UserContext)
 
     const handleCheckOut=()=>{
-        axios.post('https://electro-server.herokuapp.com/addOrder')
-        .then(res=>{
-            res.data && swal("Thank You!", "Your Order Placed Successfully!", "success");
+ 
+       const orderDetails = {...loggedInUser, book:cart , orderTime : new Date() };
+
+        axios.post('https://electro-server.herokuapp.com/addOrder',orderDetails)
+        .then(res=>{res.data && swal("Thank You!", "Your Order Placed Successfully!", "success");
         })
+        .catch(err=>console.log(err))
     }
 
 
@@ -28,16 +33,16 @@ const Checkout = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Eloquent JavaScript</td>
+              <td>{cart.productName}</td>
               <td>1</td>
-              <td>$250</td>
+              <td>$ {cart.price}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td>Total</td>
               <td></td>
-              <td>$250</td>
+              <td>$ {cart.price}</td>
             </tr>
           </tfoot>
         </Table>

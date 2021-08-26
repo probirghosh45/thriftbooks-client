@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 
 
 const Books = (props) => {
   const { productName, price, productImage } = props.book;
+  const {setCart} = useContext(UserContext)
   return (
     <Col>
       <Card className="shadow mb-4" style={{ borderRadius: "15px", border: 0 }}>
@@ -28,7 +30,8 @@ const Books = (props) => {
           <Button 
           className="button__style shadow-none" 
           as={Link} 
-          to="/checkout" >
+          to="/checkout" 
+          onClick={()=>setCart(props.book)}>
               Buy Now
           </Button>
         </Card.Body>
