@@ -8,7 +8,7 @@ const ManageBooks = ({setEditBook}) => {
   const [items,setItems]=useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:7500/books')
+    axios.get('https://vast-lake-57396.herokuapp.com/books')
         .then(response => {
             setItems(response.data);
             // setLoading(false);
@@ -22,7 +22,7 @@ const ManageBooks = ({setEditBook}) => {
 const handleDeleteItem = id => {
   const removedItems = items.filter(item => item._id !== id);
 
-  axios.delete(`http://localhost:7500/delete/${id}`)
+  axios.delete(`https://vast-lake-57396.herokuapp.com/delete/${id}`)
       .then(response => {
           response && setItems(removedItems);;
       })

@@ -7,9 +7,9 @@ const Home = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
    const [books, setBooks] = useState([]);
 
-
+   
    useEffect(() => {
-       axios.get('http://localhost:7500/books')
+       axios.get('https://vast-lake-57396.herokuapp.com/books')
        .then(res=>{
            setBooks(res.data);
        })

@@ -30,7 +30,7 @@ const AddBooks = ({editBook, updateBook }) => {
         return updateBook(bookInfo)
     }
 
-    axios.post('http://localhost:7500/addBook', bookInfo )
+    axios.post('https://vast-lake-57396.herokuapp.com/addBook', bookInfo )
     .then(res=> res.data && swal ("WoW","You have successfully added a Book!","success"))
     .then(err => console.log(err));
 

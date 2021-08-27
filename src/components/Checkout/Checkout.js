@@ -12,7 +12,7 @@ const Checkout = () => {
  
        const orderDetails = {...loggedInUser, book:cart , orderTime : new Date() };
 
-        axios.post('http://localhost:7500/addOrder',orderDetails)
+        axios.post('https://vast-lake-57396.herokuapp.com/addOrder',orderDetails)
         .then(res=>{res.data && swal("Thank You!", "Your Order Placed Successfully!", "success");
         })
         .catch(err=>console.log(err))
