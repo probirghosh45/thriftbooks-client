@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 
 
 const Books = (props) => {
-  const { bookName, bookPrice, bookImage } = props.book;
+  const { bookName, bookPrice,authorName, bookImage } = props.book;
   const {setCart} = useContext(UserContext)
   return (
     <Col>
@@ -18,10 +18,12 @@ const Books = (props) => {
             src={bookImage}
           />
         </div>
-        <Card.Body>
-          <Card.Title as={"h3"}>{bookName}</Card.Title>
+        <Card.Body className="pt-3 mt-2">
+        <Card.Title as={"h4"}>{bookName}</Card.Title>
+        <Card.Title as={"h6"}>by {authorName}</Card.Title>
+          
         </Card.Body>
-        <Card.Body className="d-flex justify-content-between align-items-center" >
+        <Card.Body className="d-flex justify-content-between align-items-center pt-0" >
           <Card.Title
           as={"h2"}
           style={{ fontWeight:"700", color:"#ff4b2b" }}>

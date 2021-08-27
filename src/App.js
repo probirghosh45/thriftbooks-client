@@ -41,9 +41,9 @@ function App() {
             <Header />
             <Deal />
           </PrivateRoute>
-          <Route path="/admin">
+          <PrivateRoute path="/admin">
             <Admin />
-          </Route>
+          </PrivateRoute>
           <Route path="/panel/:adminPanel">
             <Admin />
           </Route>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Form, Row, Col,Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
@@ -7,12 +7,23 @@ import swal from "sweetalert";
 const AddBooks = ({editBook, updateBook }) => {
 
   const {register,handleSubmit,watch,formState: { errors }} = useForm();
-  
+  const [imageURL, setImageURL] = useState("" || editBook?.bookImage);
+
   const onSubmit = (data) => {
+    
+      console.log(data);
+
       const bookInfo ={
-        bookName: data.bookName,
+           bookName: data.bookName,
           authorName: data.authorName,
-          bookPrice: data.bookPrice
+          bookPrice: data.price,
+          bookImage: imageURL
+      }
+
+      console.log(bookInfo);
+
+      if(!imageURL){
+        return swal ("image is uploading...", "Please Wait for a while...","info" )
       }
 
       if (editBook?._id) {
@@ -22,6 +33,25 @@ const AddBooks = ({editBook, updateBook }) => {
     axios.post('http://localhost:7500/addBook', bookInfo )
     .then(res=> res.data && swal ("WoW","You have successfully added a Book!","success"))
     .then(err => console.log(err));
+
+
+  }
+
+  const handleImageUpload =event =>{
+    console.log(event.target.files[0]);
+    const imageData=new FormData();
+    imageData.set('key','4441c3916186266ff77bdd932599ecfe');
+    imageData.append('image', event.target.files[0]);
+
+   axios.post('https://api.imgbb.com/1/upload',imageData)
+   .then(res=>{
+     console.log(res); //check console
+     console.log(res.data.data.display_url); //collected directory from console
+     setImageURL(res.data.data.display_url);
+   })
+
+   .catch(err=> console.log(err));
+
 
   }
 
@@ -64,7 +94,7 @@ const AddBooks = ({editBook, updateBook }) => {
               <Form.Control 
               placeholder="Enter Book's Price" 
               className="shadow-none"
-              name="bookPrice"
+              name="price"
               defaultValue={editBook?.bookPrice}  //update data
             //   {...register}
             ref={register}
@@ -78,9 +108,8 @@ const AddBooks = ({editBook, updateBook }) => {
                   <Button  
                   className="d-block shadow-none" 
                   as={"label"} 
-                  htmlFor="photoUpload
-                  ref={register}
-                  ">
+                  htmlFor="photoUpload"
+                  >
                       Update Photo
                  </Button>
                  
@@ -100,6 +129,8 @@ const AddBooks = ({editBook, updateBook }) => {
               type="file"
               id="photoUpload" 
               hidden="hidden"
+              ref={register}
+              onChange={handleImageUpload}
               />
             </Form.Group>
           </Col>
