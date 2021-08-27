@@ -10,7 +10,7 @@ const Orders = () => {
   console.log(orderDetails)
 
   useEffect(() => {
-    axios.get(`https://electro-server.herokuapp.com/orders?email=${loggedInUser.email}`)
+    axios.get(`http://localhost:7500/orders?email=${loggedInUser.email}`)
       .then((res) => setOrderDetails(res.data))
       .catch((err) => console.log(err));
     

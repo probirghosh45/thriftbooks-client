@@ -9,7 +9,7 @@ const Home = () => {
 
 
    useEffect(() => {
-       axios.get('https://electro-server.herokuapp.com/products')
+       axios.get('http://localhost:7500/books')
        .then(res=>{
            setBooks(res.data);
        })
@@ -22,7 +22,7 @@ const Home = () => {
 
 
     const onSubmit = data =>{
-        axios.get(`https://electro-server.herokuapp.com/search?keyword=${data.keyword}`)
+        axios.get(``)
         .then(res=>{
             setBooks(res.data);
         })

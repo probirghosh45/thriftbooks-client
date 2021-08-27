@@ -8,7 +8,7 @@ const ManageBooks = ({setEditBook}) => {
   const [items,setItems]=useState([]);
 
   useEffect(() => {
-    axios.get('https://electro-server.herokuapp.com/products')
+    axios.get('http://localhost:7500/books')
         .then(response => {
             setItems(response.data);
             // setLoading(false);
@@ -22,7 +22,7 @@ const ManageBooks = ({setEditBook}) => {
 const handleDeleteItem = id => {
   const removedItems = items.filter(item => item._id !== id);
 
-  axios.delete(`https://electro-server.herokuapp.com/delete/${id}`)
+  axios.delete(`http://localhost:7500/delete/${id}`)
       .then(response => {
           response && setItems(removedItems);;
       })

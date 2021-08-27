@@ -4,7 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useHistory, useParams } from 'react-router-dom';
 const ActionItem = (props) => {
-    const { _id, productName, price, category, productImage} = props.item;
+    const { _id, bookName, bookPrice, authorName , bookImage} = props.item;
     const { adminPanel } = useParams();
     const history = useHistory();
 
@@ -19,12 +19,12 @@ const ActionItem = (props) => {
                 <tr>
                     {adminPanel === "editBooks" &&
                         <td>
-                            <Image height="50" src={productImage} rounded />
+                            <Image height="50" src={bookImage} rounded />
                         </td>
                     }
-                    <td>{productName}</td>
-                    <td>{category || ""}</td>
-                    <td>${price}</td>
+                    <td>{bookName}</td>
+                    <td>{authorName || ""}</td>
+                    <td>${bookPrice}</td>
                     <td>
                         {adminPanel === "editBook" ?
                             <Button

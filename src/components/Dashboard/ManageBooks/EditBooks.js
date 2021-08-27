@@ -11,7 +11,7 @@ const EditBooks = ({ editBook, setEditBook }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://electro-server.herokuapp.com/products')
+        axios.get('http://localhost:7500/books')
             .then(response => {
                 setItems(response.data);
                 // setLoading(false);
@@ -22,7 +22,7 @@ const EditBooks = ({ editBook, setEditBook }) => {
     }, [])
 
     const updateBook = Book => {
-        axios.patch(`https://electro-server.herokuapp.com/update/${editBook?._id}`, Book)
+        axios.patch(`http://localhost:7500/update/${editBook?._id}`, Book)
             .then(response => response.data && swal("Successfully updated", "Your product is successfully updated!", "success"))
             .catch(error => console.log(error));
     }

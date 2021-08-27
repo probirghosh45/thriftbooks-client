@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 
 
 const Books = (props) => {
-  const { productName, price, productImage } = props.book;
+  const { bookName, bookPrice, bookImage } = props.book;
   const {setCart} = useContext(UserContext)
   return (
     <Col>
@@ -15,17 +15,17 @@ const Books = (props) => {
             className="w-100 pt-3"
               style={{ objectFit:"contain",maxHeight:"300px" }}
             
-            src={productImage}
+            src={bookImage}
           />
         </div>
         <Card.Body>
-          <Card.Title as={"h3"}>{productName}</Card.Title>
+          <Card.Title as={"h3"}>{bookName}</Card.Title>
         </Card.Body>
         <Card.Body className="d-flex justify-content-between align-items-center" >
           <Card.Title
           as={"h2"}
           style={{ fontWeight:"700", color:"#ff4b2b" }}>
-              ${price}
+              ${bookPrice}
           </Card.Title>
           <Button 
           className="button__style shadow-none" 

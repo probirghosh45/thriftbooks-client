@@ -10,16 +10,16 @@ const AddBooks = ({editBook, updateBook }) => {
   
   const onSubmit = (data) => {
       const bookInfo ={
-        productName: data.bookName,
-          category: data.authorName,
-          price: data.bookPrice
+        bookName: data.bookName,
+          authorName: data.authorName,
+          bookPrice: data.bookPrice
       }
 
       if (editBook?._id) {
         return updateBook(bookInfo)
     }
 
-    axios.post('https://electro-server.herokuapp.com/addProduct', bookInfo )
+    axios.post('http://localhost:7500/addBook', bookInfo )
     .then(res=> res.data && swal ("WoW","You have successfully added a Book!","success"))
     .then(err => console.log(err));
 
@@ -37,7 +37,7 @@ const AddBooks = ({editBook, updateBook }) => {
               placeholder="Enter Book's Name" 
               className="shadow-none"
               name="bookName" //addProductData
-              defaultValue={editBook?.productName}  //update/edit ProductData
+              defaultValue={editBook?.bookName}  //update/edit ProductData
             //   {...register} //react hook form ver. 7
             ref={register}  //react hook form ver. 6
               />
@@ -50,7 +50,7 @@ const AddBooks = ({editBook, updateBook }) => {
               placeholder="Enter Author's Name"
               className="shadow-none"
               name="authorName"
-              defaultValue={editBook?.category}
+              defaultValue={editBook?.authorName}
             //   {...register}
             ref={register}
               />
@@ -65,7 +65,7 @@ const AddBooks = ({editBook, updateBook }) => {
               placeholder="Enter Book's Price" 
               className="shadow-none"
               name="bookPrice"
-              defaultValue={editBook?.price}  //update data
+              defaultValue={editBook?.bookPrice}  //update data
             //   {...register}
             ref={register}
               />
